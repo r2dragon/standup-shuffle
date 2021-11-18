@@ -1,32 +1,22 @@
-import { React, useState, useEffect } from "react";
+import React, {forwardRef, useImperativeHandle, useState, useEffect } from "react";
 import styled from '@emotion/styled'
 
 
-function Rando(props) {
+const Rando = forwardRef((props, ref) => {
 
     const[inputArray, setInputArray] = useState(props.data);
     const[returnArray, setReturnArray] = useState();
-    const[editing, setEditing] = useState(false);
+
 
     const RondoContainer = styled.div`
-        background-color: #222;
-        border-radius: 10px;
-        width: ${editing ? '96%' : '92%'}; 
-        padding: ${editing ? '15px 2%' : '15px 4%'}; 
-        margin: 20px 0;
+        background-color: #333;
+        border-radius:5px;
+        width: 92%;
+        padding: 16px 4%;
+        margin: 10px 0;
         overflow: hidden;
-        font-size: 2em;
+        font-size: 1.2em;
     `
-
-    const Textarea = styled.textarea`
-        background-color: #eee;
-        border-radius: 5px 5px 0 5px;
-        width: 95%;
-        height: 150px;
-        padding: 10px;
-    `
-
-    
 
     useEffect(()=> {
 
@@ -45,35 +35,29 @@ function Rando(props) {
         setReturnArray(array)
     }
 
-    if(!editing){
-
-        return (
-            <RondoContainer>
-                <ol>
-                    {returnArray &&
-                        returnArray.map(item =>
-                            <li key={item}>{item}</li>
-                        )   
-                    }
-                </ol>
-                
-            </RondoContainer>
+    useImperativeHandle(
+        ref,
+        () => (
+            shuffleArray(inputArray) 
+         ),
+     )
     
-        );
+    return (
+        <RondoContainer>
+            <ol>
+                {returnArray &&
+                    returnArray.map(item =>
+                        <li key={item}>{item}</li>
+                    )   
+                }
+            </ol>
+            
+        </RondoContainer>
 
-    } 
+    );
 
-    else if(editing) {
-        return (
-            <RondoContainer>
-                
-                <Textarea value={inputArray} />
 
-            </RondoContainer>
     
-        );
-    }
-    
-}
+})
 
 export default Rando;

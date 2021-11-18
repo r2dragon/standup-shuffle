@@ -1,4 +1,4 @@
-import { React, useMemo, useEffect, useState } from "react";
+import { React, useMemo, useEffect, useState, useRef } from "react";
 import Header from "./header.js"
 import Rando from "./rando.js"
 import Input from "./input.js";
@@ -19,7 +19,8 @@ function Home() {
   const { search } = useLocation();
   const [params, setParams] = useState([]);
   const [inputVal, setInputVal] = useState("");
-  
+  const randoRef = useRef();
+
   const list = useMemo(() => {
     return getList(search)
   },[search])
@@ -55,7 +56,7 @@ function Home() {
       {params &&
         <>
           <Input inputValue={inputVal} setInputValue={setInputVal} />
-          <Rando data={params} />
+          <Rando data={params} ref={randoRef}/>
         </>
       }
     </Page>
