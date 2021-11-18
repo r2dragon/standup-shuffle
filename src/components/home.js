@@ -1,6 +1,7 @@
 import { React, useMemo, useEffect, useState } from "react";
 import Header from "./header.js"
 import Rando from "./rando.js"
+import Input from "./input.js";
 import styled from '@emotion/styled'
 import { useLocation } from "react-router-dom";
 
@@ -13,19 +14,12 @@ function Home() {
     display: block;
   `
 
-  const TextBox = styled.input`
-    width: 98.5%;
-    margin: 20px 1% 20px 0;
-    padding: 20px 0 20px 1%;
-    font-size: 2em;
-    border-radius: 10px;
-    background-color: #101010;
-    border: 2px solid #ccc;
-    color: #ccc;
-  `
+  
 
   const { search } = useLocation();
   const [params, setParams] = useState([]);
+  const [inputVal, setInputVal] = useState("");
+  
   const list = useMemo(() => {
     return getList(search)
   },[search])
@@ -34,28 +28,33 @@ function Home() {
     const list = new URLSearchParams(x);
     const Y = list.get("list")
     if (Y !== null) {
-      const Array = Y.split(",");
-      setParams(Array);
-      return list  
+      setInputVal(Y);  
     }  
     else {
       setParams(["ironman", "razor", "spiderman"])
+      setInputVal("ironman,razor,spiderman")
     }
     
   }
 
-  useEffect(()=> {
-    console.log(params)
-  },[params])
+  function strToArray(str) {
+    const Array = str.split(",");
+    setParams(Array);
+  }
+
+  useEffect(() => {
+    console.log(inputVal);
+    strToArray(inputVal)
+  },[inputVal])
+
+
   
   return (
     <Page>
       <Header />
       {params &&
         <>
-        <br />
-          <label for="attendees" >Add Attendees</label>
-          <TextBox type="text" id="attendees" value={params} />
+          <Input inputValue={inputVal} setInputValue={setInputVal} />
           <Rando data={params} />
         </>
       }
