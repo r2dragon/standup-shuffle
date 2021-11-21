@@ -1,30 +1,35 @@
-import React, {forwardRef, useImperativeHandle, useState, useEffect } from "react";
+import React, {useMemo,  useState } from "react";
 import styled from '@emotion/styled'
+import * as Const from "./const.js"
 
 
-const Rando = forwardRef((props, ref) => {
+const Rando = (props) => {
 
     const[inputArray, setInputArray] = useState(props.data);
     const[returnArray, setReturnArray] = useState();
+    
 
-
+    
     const RondoContainer = styled.div`
         background-color: #333;
         border-radius:5px;
         width: 92%;
         padding: 16px 4%;
-        margin: 10px 0;
+        margin: 20px 0;
         overflow: hidden;
         font-size: 1.2em;
+        
     `
 
-    useEffect(()=> {
+    useMemo(()=> {
 
         if(inputArray !== undefined) {
             shuffleArray(inputArray)
         }
 
     },[inputArray]);
+
+
 
     function shuffleArray(array) {
         for(let i = array.length - 1; i > 0; i--) {
@@ -34,15 +39,9 @@ const Rando = forwardRef((props, ref) => {
 
         setReturnArray(array)
     }
-
-    useImperativeHandle(
-        ref,
-        () => (
-            shuffleArray(inputArray) 
-         ),
-     )
     
     return (
+        <>
         <RondoContainer>
             <ol>
                 {returnArray &&
@@ -53,11 +52,12 @@ const Rando = forwardRef((props, ref) => {
             </ol>
             
         </RondoContainer>
+        </>
 
     );
 
 
     
-})
+}
 
 export default Rando;

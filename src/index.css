@@ -1,11 +1,6 @@
-@font-face {
-  font-family: VT323;
-  src: url('./fonts/VT323-Regular.ttf');
-}
-
 body {
   margin: 0;
-  font-family:'Courier New','VT323', monospace;
+  font-family:'Courier New', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;

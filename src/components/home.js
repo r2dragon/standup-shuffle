@@ -1,8 +1,10 @@
-import { React, useMemo, useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./header.js"
 import Rando from "./rando.js"
 import Input from "./input.js";
+import Url from "./url.js";
 import styled from '@emotion/styled'
+import * as Const from "./const.js"
 import { useLocation } from "react-router-dom";
 
 function Home() {
@@ -12,17 +14,45 @@ function Home() {
     color: #fff;
     padding: 50px 5%;
     display: block;
+    
+    ${Const.mq[0]} {
+      padding-top: 20px;
+    }
+    
   `
+  
+  const Meta = styled.div`
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 20px;
 
+        a {
+            color: #fff;
+        }
+
+        ${Const.mq[0]} {
+
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+         
+        }
+    `
   
 
   const { search } = useLocation();
   const [params, setParams] = useState([]);
   const [inputVal, setInputVal] = useState("");
-  const randoRef = useRef();
+  const date = new Date().toLocaleString()
 
-  const list = useMemo(() => {
-    return getList(search)
+  // const list = useMemo(() => {
+  //   return getList(search)
+  // },[search])
+
+  useEffect(() => {
+    getList(search);
   },[search])
 
   function getList(x) {
@@ -30,10 +60,11 @@ function Home() {
     const Y = list.get("list")
     if (Y !== null) {
       setInputVal(Y);  
+      strToArray(Y)
     }  
     else {
-      setParams(["ironman", "razor", "spiderman"])
-      setInputVal("ironman,razor,spiderman")
+      setParams(["Ant-Man", "Rogue", "Black Panther", "Elektra", "Iron Man", "Black Widow", "Spider-Man"])
+      setInputVal("Ant-Man,Rogue,Black Panther,Elektra,Iron Man,Black Widow,Spider-Man")
     }
     
   }
@@ -43,20 +74,26 @@ function Home() {
     setParams(Array);
   }
 
-  useEffect(() => {
-    console.log(inputVal);
-    strToArray(inputVal)
-  },[inputVal])
 
-
+  const setIt = (val) => {
+    strToArray(val);
+    setInputVal(val);
+  }
   
   return (
     <Page>
       <Header />
       {params &&
         <>
-          <Input inputValue={inputVal} setInputValue={setInputVal} />
-          <Rando data={params} ref={randoRef}/>
+          <Input inputValue={inputVal} setInputValue={setIt} />
+          <Rando data={params} />
+
+          <Url>{inputVal}</Url>
+
+          <Meta>
+            <small>Last Shuffle: {date}</small>
+            <small>Built with ❤️ by <a href="https://github.com/r2dragon" target="_blank">r2</a>, 📍 Chicago, IL󠁵󠁳</small>
+          </Meta>
         </>
       }
     </Page>

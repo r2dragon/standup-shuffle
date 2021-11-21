@@ -1,15 +1,21 @@
-import { React, forwardRef, useRef, useEffect, useState } from "react";
+import { React, useState } from "react";
 import styled from '@emotion/styled'
-import CarltonFace from '../img/carlton-face.png'
+import * as Const from "./const.js"
+import PrimaryButton from "./button.js";
 
 const TextBox = styled.div`
-    width: 85%;
-    margin: 4px 0 10px 0;
+    width: 84%;
     border-radius: 5px;
     background-color: #101010;
     border: 2px solid #333;
     height: 50px;
     overflow: hidden;
+
+    ${Const.mq[0]} {
+
+        width: 100%;
+     
+    }
 `
 
 const TextField = styled.input`
@@ -39,8 +45,16 @@ const InputArea = styled.div`
     display: flex;
     flex-direction: row;
     width: 100%;    
+    margin: 10px 0;
     align-items: center;
     justify-content: space-between;
+    
+    ${Const.mq[0]} {
+
+        justify-content: center ;
+    }
+
+
 `
 
 const Label = styled.label`
@@ -50,17 +64,7 @@ const Label = styled.label`
     z-index: 10;
 `
 
-const Button = styled.button`
-    height: 50px;
-    align-items: center;    
-    background-color: #eee;
-    width: 10%;
-    border-radius: 5px;
-    border: none;
-    font-size: 0.8em;
-    display: inline-block;
-    cursor: pointer;
-`
+
 
 const Input = ({inputValue, setInputValue}) => {
 
@@ -84,10 +88,9 @@ const Input = ({inputValue, setInputValue}) => {
                     <TextField type="text" value={val} onChange={handleChange}  />
                 </TextBox>
             
-            <Button onClick={submit}>
-                {/* <img src={CarltonFace} height="100%"/> */}
+            <PrimaryButton onClick={submit}>
                 Shuffle
-            </Button>
+            </PrimaryButton>
             
             
         </InputArea>
