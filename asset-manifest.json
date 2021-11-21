@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/standup-shuffle/static/css/main.d7716ab5.chunk.css",
+    "main.css": "/standup-shuffle/static/css/main.ded7ce15.chunk.css",
     "main.js": "/standup-shuffle/static/js/main.c95cf545.chunk.js",
     "main.js.map": "/standup-shuffle/static/js/main.c95cf545.chunk.js.map",
     "runtime-main.js": "/standup-shuffle/static/js/runtime-main.457eaba8.js",
@@ -10,7 +10,7 @@
     "static/js/3.b6f0d3f6.chunk.js": "/standup-shuffle/static/js/3.b6f0d3f6.chunk.js",
     "static/js/3.b6f0d3f6.chunk.js.map": "/standup-shuffle/static/js/3.b6f0d3f6.chunk.js.map",
     "index.html": "/standup-shuffle/index.html",
-    "static/css/main.d7716ab5.chunk.css.map": "/standup-shuffle/static/css/main.d7716ab5.chunk.css.map",
+    "static/css/main.ded7ce15.chunk.css.map": "/standup-shuffle/static/css/main.ded7ce15.chunk.css.map",
     "static/js/2.1101d575.chunk.js.LICENSE.txt": "/standup-shuffle/static/js/2.1101d575.chunk.js.LICENSE.txt",
     "static/media/carlton-face.9fe0f414.png": "/standup-shuffle/static/media/carlton-face.9fe0f414.png",
     "static/media/the-carlton.49c82473.gif": "/standup-shuffle/static/media/the-carlton.49c82473.gif"
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.457eaba8.js",
     "static/js/2.1101d575.chunk.js",
-    "static/css/main.d7716ab5.chunk.css",
+    "static/css/main.ded7ce15.chunk.css",
     "static/js/main.c95cf545.chunk.js"
   ]
 }
