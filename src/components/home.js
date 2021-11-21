@@ -9,14 +9,15 @@ import { useLocation } from "react-router-dom";
 
 function Home() {
   const Page = styled.div`
-    width: 90%;
+    width: 100%;
     background-color: #101010;
     color: #fff;
     padding: 50px 5%;
     display: block;
     
     ${Const.mq[0]} {
-      padding-top: 20px;
+      padding-top: 30px;
+      padding-bottom: 100px;
     }
     
   `
