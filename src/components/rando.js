@@ -11,9 +11,9 @@ const Rando = (props) => {
 
     
     const RondoContainer = styled.div`
-        background-color: #333;
+        background-color: #222;
         border-radius:5px;
-        width: 92%;
+        width: 100%;
         padding: 16px 4%;
         margin: 20px 0;
         overflow: hidden;

@@ -8,7 +8,7 @@ const TextBox = styled.div`
     border-radius: 5px;
     background-color: #101010;
     border: 2px solid #333;
-    height: 50px;
+    height: 60px;
     overflow: hidden;
 
     ${Const.mq[0]} {
@@ -20,12 +20,13 @@ const TextBox = styled.div`
 
 const TextField = styled.input`
     width: 100%;
-    height: 50px;
+    height: 60px;
     position: relative;
-    padding: 7px 0 0 16px;
+    padding: 12px 0 0 16px;
     border: none;
     line-height: normal;
     background-color: transparent;
+    font-family: monospace, 'Courier New';
     color: #ccc;
     outline: none;
     font-size: 1.2em;

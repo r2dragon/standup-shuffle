@@ -9,14 +9,16 @@ function Header() {
     const Nav = styled.div`
         color: #fff;
         width: 100%;
-        height: 50px;
+        height: 60px;
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-        padding: 15px 0;
-
         margin-bottom: 20px;
         
+        img {
+          height: 50px;
+        }
+
         ${Const.mq[0]} {
           justify-content: center;
         }

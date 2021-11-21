@@ -29,7 +29,8 @@ function Home() {
         margin-top: 20px;
 
         a {
-            color: #fff;
+          color: ${Const.linkColor};
+          text-decoration: none;
         }
 
         ${Const.mq[0]} {
@@ -46,7 +47,7 @@ function Home() {
   const [params, setParams] = useState([]);
   const [inputVal, setInputVal] = useState("");
   const date = new Date().toLocaleString()
-
+  const url = "https://r2dragon.github.io/standup-shuffle/#/?list=" + inputVal;
   // const list = useMemo(() => {
   //   return getList(search)
   // },[search])
@@ -74,6 +75,10 @@ function Home() {
     setParams(Array);
   }
 
+  useEffect(() => {
+
+  },[inputVal])
+
 
   const setIt = (val) => {
     strToArray(val);
@@ -88,11 +93,11 @@ function Home() {
           <Input inputValue={inputVal} setInputValue={setIt} />
           <Rando data={params} />
 
-          <Url>{inputVal}</Url>
+          <Url href={url}>{url}</Url>
 
           <Meta>
             <small>Last Shuffle: {date}</small>
-            <small>Built with ❤️ by <a href="https://github.com/r2dragon" target="_blank">r2</a>, 📍 Chicago, IL󠁵󠁳</small>
+            <small>Built with ❤️ by <a href="https://github.com/r2dragon" target="_blank">r2</a></small>
           </Meta>
         </>
       }
